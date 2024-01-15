@@ -68,7 +68,7 @@ public class Planet {
         return sumForceY;
     }
 
-    void update(double dt, double fX, double fY) {
+    public void update(double dt, double fX, double fY) {
         double aX = fX / mass;
         double aY = fY / mass;
         xxVel = xxVel + aX * dt;
