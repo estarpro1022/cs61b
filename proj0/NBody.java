@@ -36,20 +36,21 @@ public class NBody {
         double radius = readRadius(filename);
         Planet[] planets = readPlanets(filename);
 
+
         StdDraw.enableDoubleBuffering();
         StdDraw.setScale(-radius, radius);
         StdDraw.clear();
         StdDraw.picture(0, 0, "images/starfield.jpg");
         double[] forceX = new double[number];
         double[] forceY = new double[number];
-        for (int i = 0; i < number; i++) {
-            forceX[i] = planets[i].calcNetForceExertedByX(planets);
-            forceY[i] = planets[i].calcNetForceExertedByY(planets);
-            planets[i].draw();
-        }
         for (double t = 0; t < T; t += dt) {
             StdDraw.clear();
             StdDraw.picture(0, 0, "images/starfield.jpg");
+            /* each turn re-calculate force. */
+            for (int i = 0; i < number; i++) {
+                forceX[i] = planets[i].calcNetForceExertedByX(planets);
+                forceY[i] = planets[i].calcNetForceExertedByY(planets);
+            }
             for (int i = 0; i < number; i++) {
                 planets[i].update(dt, forceX[i], forceY[i]);
                 planets[i].draw();
