@@ -1,11 +1,13 @@
 public class LinkedListDeque<T> {
     private class ListNode {
-        public T item;
-        public ListNode prev;
-        public ListNode next;
+        private T item;
+        private ListNode prev;
+        private ListNode next;
+
         public ListNode(T item) {
             this(item, null, null);
         }
+
         public ListNode(T item, ListNode prev, ListNode next) {
             this.item = item;
             this.prev = prev;
@@ -51,17 +53,23 @@ public class LinkedListDeque<T> {
         return null;
     }
 
-    /** Check whether the deque is empty */
+    /**
+     * Check whether the deque is empty
+     */
     public boolean isEmpty() {
         return size == 0;
     }
 
-    /** Returns the number of items in the deque. */
+    /**
+     * Returns the number of items in the deque.
+     */
     public int size() {
         return size;
     }
 
-    /** Returns the ith item in the deque. if no such item exists, returns null. */
+    /**
+     * Returns the ith item in the deque. if no such item exists, returns null.
+     */
     public T get(int index) {
         ListNode p = sentinel.next;
         int k = 0;
@@ -84,8 +92,9 @@ public class LinkedListDeque<T> {
         }
         return getRecursiveHelper(index - 1, node.next);
     }
-    public T getRecursive(int index) {
 
+    public T getRecursive(int index) {
+        return getRecursiveHelper(index, sentinel.next);
     }
 
     public void printDeque() {
