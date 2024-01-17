@@ -101,4 +101,4 @@ public class LinkedListDequeTest {
         addRemoveTest();
         getTest();
     }
-} 
+}
