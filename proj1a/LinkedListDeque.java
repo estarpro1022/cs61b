@@ -1,0 +1,76 @@
+public class LinkedListDeque<T> {
+    private class ListNode {
+        public T item;
+        public ListNode prev;
+        public ListNode next;
+        public ListNode(T item) {
+            this(item, null, null);
+        }
+        public ListNode(T item, ListNode prev, ListNode next) {
+            this.item = item;
+            this.prev = prev;
+            this.next = next;
+        }
+    }
+
+    private ListNode sentinel;
+    private int size;
+
+    public LinkedListDeque() {
+        sentinel = new ListNode(null, null, null);
+        sentinel.prev = sentinel;
+        sentinel.next = sentinel;
+        size = 0;
+    }
+
+    public void addFirst(T item) {
+        ListNode node = new ListNode(item, sentinel, sentinel.next);
+        sentinel.next.prev = node;
+        sentinel.next = node;
+        size++;
+    }
+
+    public void addLast(T item) {
+        ListNode node = new ListNode(item, sentinel.prev, sentinel);
+        sentinel.prev.next = node;
+        sentinel.prev = node;
+        size++;
+    }
+
+    public T removeFirst() {
+        sentinel.next.next.prev = sentinel;
+        sentinel.next = sentinel.next.next;
+        size--;
+        return null;
+    }
+
+    public T removeLast() {
+        sentinel.prev.prev.next = sentinel;
+        sentinel.prev = sentinel.prev.prev;
+        size--;
+        return null;
+    }
+
+    /** Check whether the deque is empty */
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    /** Returns the number of items in the deque. */
+    public int size() {
+        return size;
+    }
+
+    /** Returns the ith item in the deque. if no such item exists, returns null. */
+    public T get(int i) {
+        return null;
+    }
+
+    public void printDeque() {
+        ListNode p = sentinel.next;
+        while (p != sentinel) {
+            System.out.print(p.item + " ");
+            p = p.next;
+        }
+    }
+}
