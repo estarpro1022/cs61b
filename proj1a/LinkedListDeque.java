@@ -62,8 +62,30 @@ public class LinkedListDeque<T> {
     }
 
     /** Returns the ith item in the deque. if no such item exists, returns null. */
-    public T get(int i) {
-        return null;
+    public T get(int index) {
+        ListNode p = sentinel.next;
+        int k = 0;
+        while (k < index) {
+            p = p.next;
+            if (p == sentinel) {
+                return null;
+            }
+            k++;
+        }
+        return p.item;
+    }
+
+    private T getRecursiveHelper(int index, ListNode node) {
+        if (index == 0) {
+            return node.item;
+        }
+        if (node.next == sentinel) {
+            return null;
+        }
+        return getRecursiveHelper(index - 1, node.next);
+    }
+    public T getRecursive(int index) {
+
     }
 
     public void printDeque() {
