@@ -43,6 +43,7 @@ public class NBody {
         StdDraw.picture(0, 0, "images/starfield.jpg");
         double[] forceX = new double[number];
         double[] forceY = new double[number];
+
         for (double t = 0; t < T; t += dt) {
             StdDraw.clear();
             StdDraw.picture(0, 0, "images/starfield.jpg");

@@ -75,12 +75,6 @@ public class Planet {
         yyVel = yyVel + aY * dt;
         xxPos = xxPos + xxVel * dt;
         yyPos = yyPos + yyVel * dt;
-//        double xxVelNew = xxVel + aX * dt;
-//        double yyVelNew = yyVel + aY * dt;
-//        xxPos = xxPos + (xxVelNew + xxVel) / 2 * dt;
-//        yyPos = yyPos + (yyVelNew + yyVel) / 2 * dt;
-//        xxVel = xxVelNew;
-//        yyVel = yyVelNew;
     }
 
     public void draw() {
