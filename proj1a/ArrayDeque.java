@@ -31,7 +31,7 @@ public class ArrayDeque<T> {
 
     public T removeFirst() {
         if (16 <= items.length && size <= 0.25 * items.length) {
-            resize((int) (0.5 * size));
+            resize((int) (0.5 * items.length));
         }
         int removeIndex = increment(nextFirst);
         T removeItem = items[removeIndex];
@@ -43,7 +43,7 @@ public class ArrayDeque<T> {
 
     public T removeLast() {
         if (16 <= items.length && size <= 0.25 * items.length) {
-            resize((int) (0.5 * size));
+            resize((int) (0.5 * items.length));
         }
         int removeIndex = decrement(nextLast);
         T removeItem = items[removeIndex];
@@ -59,7 +59,11 @@ public class ArrayDeque<T> {
 
     public T get(int index) {
         int itemIndex = increment(nextFirst);
-        return items[itemIndex + index];
+        int resIndex = itemIndex + index;
+        if (resIndex >= items.length) {
+            return items[resIndex - items.length];
+        }
+        return items[resIndex];
     }
 
     public int size() {
