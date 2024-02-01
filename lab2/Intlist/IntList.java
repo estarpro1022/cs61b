@@ -94,16 +94,27 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        IntList ptr = A;
-        while (ptr.rest != null) {
-            ptr = ptr.rest;
+        if (A == null) {
+            return B;
         }
+        // copy A
+        IntList res = new IntList(A.first, null);
+        IntList p = res;
+        IntList aPtr = A.rest;
+        while (aPtr != null) {
+            p.rest = new IntList(aPtr.first, null);
+            p = p.rest;
+            aPtr = aPtr.rest;
+        }
+
+        // copy B
         IntList bPtr = B;
         while (bPtr != null) {
-            ptr.rest = new IntList(bPtr.first, null);
+            p.rest = new IntList(bPtr.first, null);
+            p = p.rest;
             bPtr = bPtr.rest;
         }
-        return A;
+        return res;
     }
 
 
