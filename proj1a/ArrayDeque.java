@@ -58,7 +58,8 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        return items[index];
+        int itemIndex = increment(nextFirst);
+        return items[itemIndex + index];
     }
 
     public int size() {
