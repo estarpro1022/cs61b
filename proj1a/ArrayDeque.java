@@ -1,8 +1,8 @@
 public class ArrayDeque<T> {
-    T[] items;
-    int size;
-    int nextFirst;
-    int nextLast;
+    private T[] items;
+    private int size;
+    private int nextFirst;
+    private int nextLast;
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
@@ -30,21 +30,26 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (size <= 0.25 * items.length) {
+            resize((int) (0.5 * size));
+        }
         int removeIndex = increment(nextFirst);
         T removeItem = items[removeIndex];
         items[removeIndex] = null;
         nextFirst = increment(nextFirst);
+        size--;
         return removeItem;
     }
 
     public T removeLast() {
         if (size <= 0.25 * items.length) {
-
+            resize((int) (0.5 * size));
         }
         int removeIndex = decrement(nextLast);
         T removeItem = items[removeIndex];
         items[removeIndex] = null;
         nextLast = decrement(nextLast);
+        size--;
         return removeItem;
     }
 
