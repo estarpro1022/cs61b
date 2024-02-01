@@ -30,6 +30,10 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        // boundary case
+        if (size == 0) {
+            return null;
+        }
         if (16 <= items.length && size <= 0.25 * items.length) {
             resize((int) (0.5 * items.length));
         }
@@ -42,6 +46,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
         if (16 <= items.length && size <= 0.25 * items.length) {
             resize((int) (0.5 * items.length));
         }

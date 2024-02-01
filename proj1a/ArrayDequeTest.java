@@ -53,6 +53,14 @@ public class ArrayDequeTest {
     }
 
     @Test
+    public void testRemove1() {
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+        deque.removeLast();
+        deque.removeLast();
+        assertEquals(0, deque.size());
+    }
+
+    @Test
     public void testGet1() {
         ArrayDeque<Integer> deque = new ArrayDeque<>();
         deque.addFirst(10);
@@ -75,4 +83,5 @@ public class ArrayDequeTest {
         deque.addLast(8);
         assertEquals(8, deque.get(1).intValue());
     }
+
 }
