@@ -30,7 +30,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (size <= 0.25 * items.length) {
+        if (16 <= size && size <= 0.25 * items.length) {
             resize((int) (0.5 * size));
         }
         int removeIndex = increment(nextFirst);
@@ -42,7 +42,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
-        if (size <= 0.25 * items.length) {
+        if (16 <= size && size <= 0.25 * items.length) {
             resize((int) (0.5 * size));
         }
         int removeIndex = decrement(nextLast);
