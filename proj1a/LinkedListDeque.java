@@ -1,4 +1,4 @@
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T> implements Deque<T> {
     private class ListNode {
         private T item;
         private ListNode prev;
@@ -25,6 +25,7 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
+    @Override
     public void addFirst(T item) {
         ListNode node = new ListNode(item, sentinel, sentinel.next);
         sentinel.next.prev = node;
@@ -32,6 +33,7 @@ public class LinkedListDeque<T> {
         size++;
     }
 
+    @Override
     public void addLast(T item) {
         ListNode node = new ListNode(item, sentinel.prev, sentinel);
         sentinel.prev.next = node;
@@ -39,6 +41,7 @@ public class LinkedListDeque<T> {
         size++;
     }
 
+    @Override
     public T removeFirst() {
         ListNode removeItem = sentinel.next;
         removeItem.next.prev = sentinel;
@@ -49,6 +52,7 @@ public class LinkedListDeque<T> {
         return removeItem.item;
     }
 
+    @Override
     public T removeLast() {
         ListNode removeItem = sentinel.prev;
         removeItem.prev.next = sentinel;
@@ -62,6 +66,7 @@ public class LinkedListDeque<T> {
     /**
      * Check whether the deque is empty
      */
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
@@ -69,6 +74,7 @@ public class LinkedListDeque<T> {
     /**
      * Returns the number of items in the deque.
      */
+    @Override
     public int size() {
         return size;
     }
@@ -76,6 +82,7 @@ public class LinkedListDeque<T> {
     /**
      * Returns the ith item in the deque. if no such item exists, returns null.
      */
+    @Override
     public T get(int index) {
         ListNode p = sentinel.next;
         int k = 0;
@@ -103,6 +110,7 @@ public class LinkedListDeque<T> {
         return getRecursiveHelper(index, sentinel.next);
     }
 
+    @Override
     public void printDeque() {
         ListNode p = sentinel.next;
         while (p != sentinel) {
