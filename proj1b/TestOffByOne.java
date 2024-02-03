@@ -11,7 +11,8 @@ public class TestOffByOne {
     public void test0() {
         assertTrue(offByOne.equalChars('a', 'b'));
         assertTrue(offByOne.equalChars('c', 'd'));
-        assertFalse(offByOne.equalChars('c', 'c'));
+        assertTrue(offByOne.equalChars('A', 'B'));
+        assertTrue(offByOne.equalChars('C', 'B'));
         assertTrue(offByOne.equalChars('y', 'z'));
     }
 
@@ -19,6 +20,17 @@ public class TestOffByOne {
     public void test1() {
         assertFalse(offByOne.equalChars('a', 'c'));
         assertFalse(offByOne.equalChars('b', 'z'));
+        assertFalse(offByOne.equalChars('c', 'c'));
+        assertFalse(offByOne.equalChars('D', 'D'));
         assertFalse(offByOne.equalChars('c', 'a'));
+        assertFalse(offByOne.equalChars('a', 'B'));
+        assertFalse(offByOne.equalChars('D', 'c'));
+    }
+
+    @Test
+    public void test2() {
+        assertTrue(offByOne.equalChars('&', '%'));
+        assertTrue(offByOne.equalChars('%', '&'));
+        assertFalse(offByOne.equalChars('%', '%'));
     }
 }
