@@ -7,11 +7,9 @@ public class TestOffByN {
 
     @Test
     public void testOffByN() {
-        assertTrue(palindrome.isPalindrome("abc", offBy5));
-        assertTrue(palindrome.isPalindrome("aaabbb", offBy5));
-        assertTrue(palindrome.isPalindrome("abcdef", offBy5));
-        assertTrue(palindrome.isPalindrome("bbb", offBy5));
-        assertTrue(palindrome.isPalindrome("aba", offBy5));
+        assertTrue(palindrome.isPalindrome("abf", offBy5));
+        assertTrue(palindrome.isPalindrome("abchgf", offBy5));
+        assertFalse(palindrome.isPalindrome("aaa", offBy5));
     }
 
     @Test
